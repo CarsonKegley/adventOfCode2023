@@ -1,11 +1,13 @@
 def getInput(path):
     file = open(path,"r")
     content = file.read()
+    file.close()
     cleanContent = content[:-1]
     contentList = cleanContent.split("\n")
     return contentList
 
 numberWords = {
+    
         "one":"1",
         "two":"2",
         "three":"3",
@@ -19,5 +21,27 @@ numberWords = {
 
 calibrationValues = getInput("input.txt")
 
+numberValue=[]
 for value in calibrationValues:
-    value
+    indexOfNumber = {} 
+    for word, num in numberWords.items():
+        indexOfWord= value.find(word)
+        if indexOfWord != -1:
+            indexOfNumber[indexOfWord] = num 
+    for i in range(len(value)):
+        if value[i].isnumeric():
+            indexOfNumber[i] = value[i]
+    sortedIndexDict = sorted(indexOfNumber.items())
+    if len(sortedIndexDict) == 1:
+        numberValue.append(str(sortedIndexDict[0][1]) + str(sortedIndexDict[0][1]))
+    else:
+        numberValue.append(sortedIndexDict[0][1]+ sortedIndexDict[-1][1])
+    print(sortedIndexDict[0][1]+ sortedIndexDict[-1][1])
+print(numberValue)
+
+
+totalCalibrationValue = 0 
+for value in numberValue:
+    totalCalibrationValue += int(value)
+print(totalCalibrationValue)
+
