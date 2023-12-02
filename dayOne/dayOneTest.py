@@ -19,7 +19,7 @@ numberWords = {
         "nine":"9"
     }
 
-calibrationValues = getInput("input.txt")
+calibrationValues = getInput("testInput.txt")
 
 numberValue=[]
 for value in calibrationValues:
@@ -36,9 +36,9 @@ for value in calibrationValues:
         numberValue.append(str(sortedIndexDict[0][1]) + str(sortedIndexDict[0][1]))
     else:
         numberValue.append(sortedIndexDict[0][1]+ sortedIndexDict[-1][1])
-    print(sortedIndexDict[0][1]+ sortedIndexDict[-1][1])
-print(numberValue)
 
+for i in range(len(calibrationValues)):
+    print(calibrationValues[i] + ":" + numberValue[i])
 
 totalCalibrationValue = 0 
 for value in numberValue:
